@@ -2,8 +2,9 @@
   "name": "event-management-backend",
   "version": "1.0.0",
   "scripts": {
+    "postinstall": "npx prisma generate --schema src/prisma/schema.prisma",
     "dev": "ts-node-dev --respawn src/server.ts",
-    "build": "tsc && npx prisma generate --schema src/prisma/schema.prisma",
+    "build": "npx prisma generate --schema src/prisma/schema.prisma && tsc",
     "start": "node dist/server.js",
     "db:generate": "npx prisma generate --schema src/prisma/schema.prisma",
     "db:migrate": "npx prisma migrate dev --schema src/prisma/schema.prisma",

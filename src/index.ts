@@ -9,12 +9,11 @@ const app = express();
 
 app.use(cors({
   origin: (origin, callback) => {
-    const allowed = [
-      "http://localhost:5173",
-      "https://frontend-sigma-blush-70.vercel.app",
-      "https://frontend-537tdj10p-dante-grup-s-projects.vercel.app"
-    ];
-    if (!origin || allowed.includes(origin)) {
+    if (
+      !origin ||
+      origin.includes("vercel.app") ||
+      origin === "http://localhost:5173"
+    ) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
